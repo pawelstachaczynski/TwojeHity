@@ -3,11 +3,16 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [
+      "@angular/localize"
+    ]
   },
   "files": [
     "src/main.ts"
   ],
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
   "include": [
     "src/**/*.d.ts"
   ]
