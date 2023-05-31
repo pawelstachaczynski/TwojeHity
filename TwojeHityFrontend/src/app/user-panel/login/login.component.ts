@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { ConfigStore } from 'src/app/app-config/config-store';
 import { Login } from 'src/app/models/login.model';
 import { AlertService } from 'src/app/services/app-services/alert.service';
@@ -20,12 +21,24 @@ export class LoginComponent implements OnInit{
 
   private login : Login;
   
-  constructor(private router : Router, private authService : AuthService, private configStore: ConfigStore,  /* private alertService: AlertService */) {}
+  constructor(private router : Router, private authService : AuthService, private configStore: ConfigStore,  private alertService: AlertService ) {}
 
   ngOnInit(): void {}
   
   async logIn() {
     this.configStore.startLoadingPanel();
+    let isOk : boolean;
+    this.login = new Login(this.loginForm.value.login, this.loginForm.value.password)
+    let authToken = await lastValueFrom(this.authService.logIn(this.login))
+    const expirationDate = authToken.tokenExpirationDate;
+    this.authService.handleAuthentication(authToken.login, authToken.userId, authToken.token, expirationDate)
+    console.log('yy')
+    this.alertService.showSuccess("Zalogowano pomyślnie");
+
+    setTimeout(() => {
+      this.configStore.stopLoadingPanel();
+    }, 2000);
+   // this.router.navigate(['../'])
   }
   
 

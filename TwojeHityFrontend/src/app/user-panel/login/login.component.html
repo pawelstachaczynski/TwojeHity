@@ -9,8 +9,8 @@
           <div class="card-body">
             <form>
               <div class="form-group m-1">
-                <label for="exampleInputEmail1">E-mail</label>
-                <input formControlName="email" type="email" class="form-control" placeholder="Wprowadź email">
+                <label for="exampleInputEmail1">Login</label>
+                <input formControlName="login" type="text" class="form-control" placeholder="Wprowadź email">
               </div>
               <br>
               <div class="form-group m-1">
@@ -19,10 +19,10 @@
               </div>
               <div class="form-group">
                 <p class="form-text text-muted text-center">Nie masz konta? <a>Zarejestruj się!</a><br>
-                  Zapomniałeś hasła? <a >Kliknij tutaj!</a></p>
+                  </p>
               </div>
               <div class="d-flex justify-content-end">
-                <button href class="btn btn-success m-1 text-right" >Zaloguj</button>
+                <button href class="btn btn-success m-1 text-right" (click)="logIn()">Zaloguj</button>
               </div>
             </form>
           </div>

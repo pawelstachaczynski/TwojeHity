@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ConfigStore } from 'src/app/app-config/config-store';
 import { AuthInfo } from 'src/app/models/auth-info.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -12,7 +13,7 @@ export class UserNavigationComponent implements OnInit, OnDestroy{
 public authInfo : AuthInfo;
 public userSub : Subscription;
 
-constructor(private authService: AuthService) {}
+constructor(private authService: AuthService, private configStore: ConfigStore) {}
 
   ngOnInit(): void {
     this.userSub =  this.authService.user.subscribe(user => {
@@ -20,6 +21,15 @@ constructor(private authService: AuthService) {}
       })
   }
 
+  trySpinner() {
+    this.configStore.startLoadingPanel();
+    console.log('yy')
+    setTimeout(() => {
+      this.configStore.stopLoadingPanel();
+    }, 2000);
+    
+
+  }
   ngOnDestroy(): void {
     
   }

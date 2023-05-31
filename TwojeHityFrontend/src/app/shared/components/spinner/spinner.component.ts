@@ -20,7 +20,7 @@ constructor(private configStore : ConfigStore) {}
   }
 
   ngOnDestroy(): void {
-    this.loadingPanelSub.unsubscribe();
+   this.loadingPanelSub.unsubscribe();
   }
 
 }
