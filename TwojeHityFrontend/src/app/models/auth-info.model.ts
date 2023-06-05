@@ -5,7 +5,7 @@ export class AuthInfo {
     isAuthenticated: boolean;
     
     constructor(user : User) {
-        console.log(user);
+        console.log('co to' + JSON.stringify(user));
         this.isAuthenticated = !user ? false : true;
 
     }

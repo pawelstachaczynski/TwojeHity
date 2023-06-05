@@ -1,3 +1,3 @@
 export class AppConfig {
-    public static APP_URL = "https://localhost:44331/" //do zmiany
+    public static APP_URL = "https://localhost:7092/"
 }

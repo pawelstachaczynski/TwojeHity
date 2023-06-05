@@ -21,15 +21,6 @@ constructor(private authService: AuthService, private configStore: ConfigStore) 
       })
   }
 
-  trySpinner() {
-    this.configStore.startLoadingPanel();
-    console.log('yy')
-    setTimeout(() => {
-      this.configStore.stopLoadingPanel();
-    }, 2000);
-    
-
-  }
   ngOnDestroy(): void {
     
   }

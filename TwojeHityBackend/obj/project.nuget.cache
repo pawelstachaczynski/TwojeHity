@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x3T/ur2DSIFTh7DZ5Q9hxRknJzIxXufK98xkMIGOM6YpbqkudyKpBAYD9vyVhl4f9RTA4Oi23O9z0DHF54oHNA==",
+  "dgSpecHash": "w/5oFNw7LTKPNyIFw1zYJrQQSLWEKGq7D7Atgq+qa7X/EoG53lviiYF8clY2l/FXKKxVYsQvIQcDfHsMW6ZIug==",
   "success": true,
   "projectFilePath": "C:\\Users\\pawel.stachaczynski\\Documents\\GitHub\\TwojeHity\\TwojeHityBackend\\TwojeHity.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\nlog\\5.2.0\\nlog.5.2.0.nupkg.sha512",
     "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\nlog.extensions.logging\\5.3.0\\nlog.extensions.logging.5.3.0.nupkg.sha512",
     "C:\\Users\\pawel.stachaczynski\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.0\\nlog.web.aspnetcore.5.3.0.nupkg.sha512",

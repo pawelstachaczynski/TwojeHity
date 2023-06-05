@@ -13,7 +13,7 @@ import { AuthToken } from "../models/auth-token";
 export class AuthService{
     public user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
     private serverUrl: string = AppConfig.APP_URL;
-    private apiUrl : string = `${this.serverUrl}api/account/`;
+    private apiUrl: string = `${this.serverUrl}api/account/`;
     private tokenExpirationTimer: any;
 
     constructor(private http: HttpClient, private alertService: AlertService, private router: Router) {
@@ -26,11 +26,13 @@ export class AuthService{
 
     logIn(login: Login)
     {
-        return this.http.post<AuthToken>(`${this.apiUrl}/login`, login)
+       // console.log(this.apiUrl)
+       return this.http.post<AuthToken>(`${this.apiUrl}login`, login);
     }
 
     public handleAuthentication(login: string, userId: string, token: string, tokenExpirationDate: Date){
         const user = new User(login, userId, token, tokenExpirationDate);
+        console.log(user);
         this.user.next(user);
         const expirationDuration = new Date(tokenExpirationDate).getTime() - new Date().getTime();
         this.autoLogOut(expirationDuration);

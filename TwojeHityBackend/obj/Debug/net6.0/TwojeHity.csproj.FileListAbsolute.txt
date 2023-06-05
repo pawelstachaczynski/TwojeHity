@@ -92,3 +92,6 @@ C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\obj\Deb
 C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\obj\Debug\net6.0\TwojeHity.pdb
 C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\obj\Debug\net6.0\TwojeHity.genruntimeconfig.cache
 C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\obj\Debug\net6.0\ref\TwojeHity.dll
+C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\bin\Debug\net6.0\Database\songs.json
+C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\bin\Debug\net6.0\songs.json
+C:\Users\pawel.stachaczynski\Documents\GitHub\TwojeHity\TwojeHityBackend\bin\Debug\net6.0\Newtonsoft.Json.dll

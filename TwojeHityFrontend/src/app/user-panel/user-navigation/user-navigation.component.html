@@ -8,8 +8,8 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link" href routerLink="./login" *ngIf="!authInfo.isAuthenticated">Zaloguj się</a>
+              <a class="nav-link" href routerLink="./all" *ngIf="authInfo.isAuthenticated">Przeglądaj listę hitów</a>
               <a class="nav-link" href="#" *ngIf="authInfo.isAuthenticated">Twoja baza</a> 
-              <a class="nav-link active" aria-current="page" (click)="trySpinner()">Spinner test</a>
             </div>
           </div>
         </div>

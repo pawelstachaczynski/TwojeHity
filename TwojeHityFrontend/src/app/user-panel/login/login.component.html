@@ -7,10 +7,10 @@
             <h2 class="text-center">Zaloguj się</h2>
           </div>
           <div class="card-body">
-            <form>
+            <form [formGroup]="loginForm">
               <div class="form-group m-1">
-                <label for="exampleInputEmail1">Login</label>
-                <input formControlName="login" type="text" class="form-control" placeholder="Wprowadź email">
+                <label>Login</label>
+                <input formControlName="login" type="text" class="form-control" placeholder="Wprowadź login">
               </div>
               <br>
               <div class="form-group m-1">

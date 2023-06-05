@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TwojeHityBackend"
+    "\\TwojeHityBackend",
+    "\\TwojeHityBackend\\Validators"
   ],
-  "SelectedNode": "\\TwojeHityBackend\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

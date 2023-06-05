@@ -15,9 +15,11 @@ import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { IndicatorsModule } from "@progress/kendo-angular-indicators";
 import { AuthService } from './services/auth.service';
 import { AlertService } from './services/app-services/alert.service';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConfigStore } from './app-config/config-store';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpErrorInterceptorService } from './services/interceptors/http-error-interceptor.service';
+import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ConfigStore } from './app-config/config-store';
     LoginComponent,
     UserNavigationComponent,
     UserPanelMainPageComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    BrowseAllComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { ConfigStore } from './app-config/config-store';
     GridModule,
     BrowserAnimationsModule,
     IndicatorsModule,
+    ReactiveFormsModule,
     ButtonsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
@@ -43,7 +47,7 @@ import { ConfigStore } from './app-config/config-store';
     }),
     HttpClientModule
   ],
-  providers: [AuthService, AlertService, HttpClient, ConfigStore],
+  providers: [AuthService, AlertService, HttpClient, ConfigStore, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
