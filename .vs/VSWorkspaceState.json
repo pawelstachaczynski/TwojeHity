@@ -2,7 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\TwojeHityBackend",
+    "\\TwojeHityBackend\\Controllers",
+    "\\TwojeHityBackend\\Database",
+    "\\TwojeHityBackend\\Helpers",
+    "\\TwojeHityBackend\\Services",
     "\\TwojeHityBackend\\Validators"
   ],
+  "SelectedNode": "\\TwojeHityBackend\\Helpers\\ErrorHandlingMiddleware.cs",
   "PreviewInSolutionExplorer": false
 }

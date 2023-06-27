@@ -1,8 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TwojeHity.Models;
 using TwojeHity.Models.DTOs;
 using TwojeHity.Models.DTOs.User;
@@ -37,6 +33,20 @@ namespace TwojeHity.Helpers
                .ForMember(x => x.Login, y => y.MapFrom(z => z.Login))
                .ForMember(x => x.Password, y => y.MapFrom(z => z.PasswordHash));
 
+            CreateMap<Song, SongDto>()
+              .ForMember(x => x.rank, y => y.MapFrom(z => z.rank))
+              .ForMember(x => x.title, y => y.MapFrom(z => z.title))
+              .ForMember(x => x.artist, y => y.MapFrom(z => z.artist))
+              .ForMember(x => x.album, y => y.MapFrom(z => z.album))
+              .ForMember(x => x.year, y => y.MapFrom(z => z.year));
+
+
+            CreateMap<SongDto, Song>()
+              .ForMember(x => x.rank, y => y.MapFrom(z => z.rank))
+              .ForMember(x => x.title, y => y.MapFrom(z => z.title))
+              .ForMember(x => x.artist, y => y.MapFrom(z => z.artist))
+              .ForMember(x => x.album, y => y.MapFrom(z => z.album))
+              .ForMember(x => x.year, y => y.MapFrom(z => z.year));
 
 
 

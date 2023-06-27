@@ -9,7 +9,8 @@
             <div class="navbar-nav">
               <a class="nav-link" href routerLink="./login" *ngIf="!authInfo.isAuthenticated">Zaloguj się</a>
               <a class="nav-link" href routerLink="./all" *ngIf="authInfo.isAuthenticated">Przeglądaj listę hitów</a>
-              <a class="nav-link" href="#" *ngIf="authInfo.isAuthenticated">Twoja baza</a> 
+              <a class="nav-link" href routerLink="./your-favorite" *ngIf="authInfo.isAuthenticated">Twoja baza</a> 
+              <a class="nav-link" href routerLink="./add-new-song" *ngIf="authInfo.isAuthenticated">+Dodaj</a>
             </div>
           </div>
         </div>

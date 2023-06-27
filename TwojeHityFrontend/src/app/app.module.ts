@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,9 @@ import { ConfigStore } from './app-config/config-store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpErrorInterceptorService } from './services/interceptors/http-error-interceptor.service';
 import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component'; 
+import { SongService } from './models/song.service';
+import { AddNewSongComponent } from './user-panel/add-new-song/add-new-song.component';
+import { YourFavoriteComponent } from './user-panel/your-favorite/your-favorite.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component
     UserNavigationComponent,
     UserPanelMainPageComponent,
     SpinnerComponent,
-    BrowseAllComponent
+    BrowseAllComponent,
+    AddNewSongComponent,
+    YourFavoriteComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component
     }),
     HttpClientModule
   ],
-  providers: [AuthService, AlertService, HttpClient, ConfigStore, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
-  bootstrap: [AppComponent]
+  providers: [AuthService, AlertService, HttpClient, ConfigStore, SongService, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
