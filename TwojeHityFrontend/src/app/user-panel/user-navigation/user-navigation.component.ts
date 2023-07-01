@@ -24,4 +24,8 @@ constructor(private authService: AuthService, private configStore: ConfigStore) 
   ngOnDestroy(): void {
     
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }

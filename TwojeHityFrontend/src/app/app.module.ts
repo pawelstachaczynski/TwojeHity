@@ -23,6 +23,9 @@ import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component
 import { SongService } from './models/song.service';
 import { AddNewSongComponent } from './user-panel/add-new-song/add-new-song.component';
 import { YourFavoriteComponent } from './user-panel/your-favorite/your-favorite.component';
+import { RegisterComponent } from './user-panel/register/register.component';
+import { YourFavoriteFromModalComponent } from './user-panel/your-favorite/your-favorite-from-modal/your-favorite-from-modal.component';
+import { WindowService } from './services/window.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { YourFavoriteComponent } from './user-panel/your-favorite/your-favorite.
     SpinnerComponent,
     BrowseAllComponent,
     AddNewSongComponent,
-    YourFavoriteComponent
+    YourFavoriteComponent,
+    RegisterComponent,
+    YourFavoriteFromModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,7 @@ import { YourFavoriteComponent } from './user-panel/your-favorite/your-favorite.
     }),
     HttpClientModule
   ],
-  providers: [AuthService, AlertService, HttpClient, ConfigStore, SongService, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
+  providers: [WindowService, AuthService, AlertService, HttpClient, ConfigStore, SongService, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

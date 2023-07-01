@@ -20,7 +20,7 @@ namespace TwojeHity.Database
     public class Seeder
     {
         private readonly AppDbContext _dbContext;
-        private string jsonContent;
+       // private string jsonContent;
         public Seeder(AppDbContext dbContext)
         {
             _dbContext = dbContext;
