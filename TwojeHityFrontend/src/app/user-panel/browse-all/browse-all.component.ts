@@ -53,7 +53,7 @@ this.groupable = {
 
 let event: any = { target: { value: ""}};
 this.onFilter(event);
-console.log(this.gridView)
+
   }
 
 
@@ -100,7 +100,7 @@ console.log(this.gridView)
     // close the editor
     grid.closeRow(rowIndex);
     // revert the data item to original state
-    this.editService.newDataItem() //.resetItem(this.editedProduct);
+    this.editService.newDataItem() 
     // reset the helpers
     this.editedRowIndex = undefined;
     this.editedProduct = undefined;

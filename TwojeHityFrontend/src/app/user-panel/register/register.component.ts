@@ -52,6 +52,7 @@ export class RegisterComponent {
   async registerUser() {
     if(!this.validateForm())
     {
+      this.alertService.showError("Formularz został błędnie wypełniony")
       return;
     }
     console.log(JSON.stringify(this.formGroup.value));
@@ -59,7 +60,7 @@ export class RegisterComponent {
     let registerUser: Register = this.formGroup.value;
     await lastValueFrom(this.authService.signup(registerUser).pipe(timeout(2000))).then(() => {
       this.configStore.stopLoadingPanel();
-      this.alertService.showSuccess("Rejestracja przebiegła pomyslnie!")
+      this.alertService.showSuccess("Rejestracja przebiegła pomyślnie! Możesz się teraz zalogować")
       
     }).catch((error) => {
       console.log(error.message)
@@ -67,13 +68,8 @@ export class RegisterComponent {
       this.alertService.showError(error.message)
     
     });
-    
-    //this.router.navigate(['./success'],{relativeTo: this.route})
     this.router.navigate(['./'])
-   
-    /* setTimeout(() => {
-      this.configStore.stopLoadingPanel();
-  }, 1000); */
+
   }
 
   validateForm(): boolean {
@@ -91,7 +87,6 @@ export class RegisterComponent {
         return isOk = false;
       }
     }
-    console.log('tak')
     return isOk = true;
     }
 

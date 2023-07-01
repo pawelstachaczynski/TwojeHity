@@ -25,17 +25,17 @@ export class SongService{
     }
 
     addNew(song: AddSong) {
-        console.log('dodaję ' + JSON.stringify(song))
+
         return this.httpClient.post<Song>(`${this.apiUrl}`,song)
     }
 
     addNewWithFavorite(song: AddSongWithFavorite) {
-        console.log('dodaję ' + JSON.stringify(song))
+
         return this.httpClient.post<Song>(`${this.apiUrl}new-with-favorite`,song)
     }
 
     getAllFavorites(userId) {
-      //  console.log(params: userId)
+    
         return this.httpClient.get<Song[]>(`${this.apiUrl}your-favorite/`+userId)
     }
 

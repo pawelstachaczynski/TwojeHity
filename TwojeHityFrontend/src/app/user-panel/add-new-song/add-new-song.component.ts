@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { ConfigStore } from 'src/app/app-config/config-store';
@@ -12,6 +12,7 @@ import { AddSong } from 'src/app/models/addSong.model';
 import { Favorites } from 'src/app/models/favorites.model';
 import { AddSongWithFavorite } from 'src/app/models/addSongWithFavorite.model';
 import { AuthToken } from 'src/app/models/auth-token';
+
 @Component({
   selector: 'app-add-new-song',
   templateUrl: './add-new-song.component.html',
@@ -22,16 +23,50 @@ export class AddNewSongComponent {
   addToFavorite: Favorites;
   userId: number;
   private response;
-  public newSongForm = new FormGroup( {
-    title: new FormControl(''),
-    artist: new FormControl(''),
-    album: new FormControl(''),
+/*   public newSongForm = new FormGroup( {
+    title: new FormControl('',
+    [
+      Validators.required, 
+      Validators.minLength(1), 
+    ]),
+    artist: new FormControl('', 
+    [
+      Validators.required, 
+      Validators.minLength(1), 
+    ]),
+    album: new FormControl('', 
+    [
+      Validators.required, 
+      Validators.minLength(1), 
+    ]),
+    year:  new FormControl<number>(2000),
+    isFavorite: new FormControl('option2') //.setValue("false", {emitEvent: true})
+
+  }); */
+
+  public newSongForm : FormGroup = this.formBuilder.group ( {
+    title: new FormControl('',
+    [
+      Validators.required, 
+      Validators.minLength(1), 
+    ]),
+    artist: new FormControl('', 
+    [
+      Validators.required, 
+      Validators.minLength(1), 
+    ]),
+    album: new FormControl('', 
+    [
+      Validators.required, 
+      Validators.minLength(1), 
+    ]),
     year:  new FormControl<number>(2000),
     isFavorite: new FormControl('option2') //.setValue("false", {emitEvent: true})
 
   });
+
+
   handleFavoriteChange(event: any) {
-    console.log(event.target.value)
     this.isFavorite = event.target.value
 return  event.target.value
    // event.target.value(console.log(this.value))
@@ -40,7 +75,7 @@ return  event.target.value
   private song: AddSong
   private songFav: AddSongWithFavorite
 
-   constructor(private router : Router, private authService : AuthService,  private songService: SongService, private configStore: ConfigStore,  private alertService: AlertService ) {}
+   constructor(private formBuilder: FormBuilder, private router : Router, private authService : AuthService,  private songService: SongService, private configStore: ConfigStore,  private alertService: AlertService ) {}
  
   ngOnInit(): void {
     this.isFavorite = "false";
@@ -54,20 +89,38 @@ return  event.target.value
    
     const userData = JSON.parse(localStorage.getItem('userData'));
      this.userId = userData.id;
-    console.log('kk'+  this.userId)
+    
    }
 
+   validateForm(): boolean {
+    let form = document.querySelector('form') as HTMLFormElement;
+    let inputs = form.getElementsByTagName('input');
+    let isOk = true;
+
+    for(let i = 0; i < inputs.length; i++)
+    {
+      inputs.item(i)?.dispatchEvent(new FocusEvent('focusout')); //wysyła zdarzenie do wykonania na elemencie
+      if(inputs.item(i)?.className.includes('invalid'))
+      {
+        return isOk = false;
+      }
+    }
+
+    return isOk = true;
+    }
   async SaveNewSong() {
+    if(!this.validateForm())
+    {
+      this.alertService.showError("Wprowadź dane we wszystkie pola")
+      return;
+    }
    this.addToFavorite = {
       UserId: this.userId
    }
     this.configStore.startLoadingPanel();
-     console.log(this.newSongForm);
-     console.log("asdsa" + this.isFavorite)
    if (this.isFavorite == "true")
   {
     this.songFav = new AddSongWithFavorite(this.newSongForm.value.title, this.newSongForm.value.artist, this.newSongForm.value.album, this.newSongForm.value.year, this.addToFavorite)
-    console.log(this.songFav);
     this.response =  await lastValueFrom(this.songService.addNewWithFavorite(this.songFav))
      this.configStore.stopLoadingPanel();
      this.alertService.showSuccess("Dodano pomyślnie!");
@@ -76,16 +129,13 @@ return  event.target.value
      if (this.isFavorite.valueOf() == "false")
      {
       this.song = new AddSong(this.newSongForm.value.title, this.newSongForm.value.artist, this.newSongForm.value.album, this.newSongForm.value.year)
-      console.log(this.song);
+      
       this.response =  await lastValueFrom(this.songService.addNew(this.song))
        this.configStore.stopLoadingPanel();
        this.alertService.showSuccess("Dodano pomyślnie!");
       
      }
 
-  //  console.log(this.song);
-  //  this.response =  await lastValueFrom(this.songService.addNew(this.song))
-  //  this.configStore.stopLoadingPanel();
    }
    
 }

@@ -26,13 +26,11 @@ export class AuthService{
 
     logIn(login: Login)
     {
-       // console.log(this.apiUrl)
        return this.http.post<AuthToken>(`${this.apiUrl}login`, login);
     }
 
     public handleAuthentication(login: string, userId: string, token: string, tokenExpirationDate: Date){
         const user = new User(login, userId, token, tokenExpirationDate);
-        console.log(user);
         this.user.next(user);
         const expirationDuration = new Date(tokenExpirationDate).getTime() - new Date().getTime();
         this.autoLogOut(expirationDuration);

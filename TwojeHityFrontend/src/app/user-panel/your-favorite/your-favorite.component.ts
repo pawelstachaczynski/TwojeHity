@@ -39,43 +39,27 @@ export class YourFavoriteComponent  implements OnInit, OnDestroy {
   constructor(private alertService: AlertService ,private router: Router, private route: ActivatedRoute, private configStore: ConfigStore, private songService: SongService, private authService: AuthService, private windowService: WindowService) {
     this.addListeners();
   }
-  //https://www.telerik.com/kendo-angular-ui/components/grid/editing/inline-editing/
-// Tutaj : Usuń z ulubionych
-  //na ogólnym widoku "Usuń z bazy"
+
   ngOnDestroy(): void { }
   
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe(async params => {
-     // let id: number = +params['id'];
-     // if (id) {
         const userData = JSON.parse(localStorage.getItem('userData'));
         this.userId = userData.id;
-        console.log('kk' + this.userId)
         this.configStore.startLoadingPanel();
         await this.getAllFavorites();
         await this.loadData();
         this.configStore.stopLoadingPanel();
-       
-        
-  //    }
+
     })
   }
   private async addListeners(){
     this.windowCloseListener = this.windowService.openWindow.subscribe((value) => {
-      console.log('delete')
       this.isCreateModalOpened = value;
       this.deleteModalOpened = value;
     })
- //  this.categorySaveListener = this.categoryService.createCategoryModalSaved.subscribe(async category => {
- //    if(this.isNew){
- //      await this.saveCategory(category);
- //    }else{
- //      await this.updateCategory(category);
- //    }
-//    });
     this.categoryDeleteListener = this.windowService.deleteObject.subscribe(async object => {
-      console.log('delete')
-    // await this.deleteCategory(object);
+
     })
   }
 
@@ -104,7 +88,6 @@ this.groupable = {
 
 let event: any = { target: { value: ""}};
 this.onFilter(event);
-console.log(this.gridView)
   }
 
 
@@ -168,51 +151,26 @@ console.log(this.gridView)
     this.editedProduct = undefined;
   }
 
- // public removeHandler(args: RemoveEvent): void {
- //   // remove the current dataItem from the current data source
- //   // in this example, the dataItem is `editService`
- //   this.editService.remove(args.dataItem);
- // }
-
   
  public async removeHandler({dataItem}): Promise<void> {
     // remove the current dataItem from the current data source
     // in this example, the dataItem is `editService`
    this.configStore.startLoadingPanel();
-   console.log(dataItem);
     this.songs = dataItem;
     this.response = await lastValueFrom(this.songService.deleteSong(this.songs['id']));
-   // this.deleteModalOpened = true;
-   
    this.alertService.showSuccess("Usunięto pomyślnie!");
-  // this.router.navigateByUrl('/your-favorite', { skipLocationChange: true }).then(() => {
-  //  this.router.navigate([this.router.url]);
-  //});
   await this.getAllFavorites();
    await this.loadData();
    this.configStore.stopLoadingPanel();
-    //const toDelete = this.songs[0];
-    console.log(this.songs['id']);
-   // this.songService.deleteSong(this.songs['id']);
-    //this.editService.remove(args.dataItem);
   }
   
   
   public editHandler(args: EditEvent): void {
-    //this.closeEditor(args.sender);
-    console.log(args.rowIndex)
     this.editedRowIndex = args.rowIndex;
     this.editedProduct = Object.assign({}, args.dataItem);
-    console.log( this.editedProduct)
     args.sender.editRow(args.rowIndex);
 
   }
-
- // public removeHandler2(args: RemoveEvent): void {
- //   // remove the current dataItem from the current data source
- //   // in this example, the dataItem is `editService`
- //   this.editService.remove(args.dataItem);
- // }
  
 }
 

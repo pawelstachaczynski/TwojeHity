@@ -27,11 +27,10 @@ export class LoginComponent implements OnInit{
   
   async logIn() {
     this.configStore.startLoadingPanel();
-    console.log(this.loginForm)
+   
     this.login = new Login(this.loginForm.value.login, this.loginForm.value.password)
     let authToken = await lastValueFrom(this.authService.logIn(this.login));
     //let authToken = await (this.authService.logIn(this.login)).toPromise();
-    console.log(authToken.tokenExpirationDate);
     const expirationDate = authToken.tokenExpirationDate;
     this.authService.handleAuthentication(authToken.login, authToken.userId, authToken.token, expirationDate)
     this.alertService.showSuccess("Zalogowano pomyślnie");
