@@ -26,6 +26,7 @@ import { YourFavoriteComponent } from './user-panel/your-favorite/your-favorite.
 import { RegisterComponent } from './user-panel/register/register.component';
 import { YourFavoriteFromModalComponent } from './user-panel/your-favorite/your-favorite-from-modal/your-favorite-from-modal.component';
 import { WindowService } from './services/window.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { WindowService } from './services/window.service';
     }),
     HttpClientModule
   ],
-  providers: [WindowService, AuthService, AlertService, HttpClient, ConfigStore, SongService, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
+  providers: [WindowService, AuthGuard, AuthService, AlertService, HttpClient, ConfigStore, SongService, {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi:true}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { AddNewSongComponent } from './user-panel/add-new-song/add-new-song.component';
 import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component';
 import { LoginComponent } from './user-panel/login/login.component';
@@ -14,10 +15,10 @@ const routes: Routes = [
       { path: '', component: UserPanelMainPageComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'all', component: BrowseAllComponent },
-      { path: 'add-new-song', component: AddNewSongComponent },
+      { path: 'all', component: BrowseAllComponent, canActivate: [AuthGuard] },
+      { path: 'add-new-song', component: AddNewSongComponent, canActivate: [AuthGuard]},
       {
-        path: 'your-favorite', component: YourFavoriteComponent, children: [
+        path: 'your-favorite', component: YourFavoriteComponent, canActivate: [AuthGuard], children: [
           { path: ':id', component: YourFavoriteComponent }
         ]
       }
