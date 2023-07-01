@@ -20,7 +20,6 @@ namespace TwojeHity.Database
     public class Seeder
     {
         private readonly AppDbContext _dbContext;
-       // private string jsonContent;
         public Seeder(AppDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -36,11 +35,7 @@ namespace TwojeHity.Database
             if (_dbContext.Database.CanConnect())
             {
                if(!_dbContext.Songs.Any()) {
-                    //StreamReader songs = new StreamReader("songs.json");
-                    //jsonContent = songs.ReadToEnd();
-                    //List<Song> songList = JsonSerializer.Deserialize<List<Song>>(jsonContent);
-                    //_dbContext.Songs.AddRange(songList);
-                    //_dbContext.SaveChanges();
+
 
                     string jsonContent = File.ReadAllText("songs.json");
                     var jsonData = JObject.Parse(jsonContent);
@@ -54,23 +49,4 @@ namespace TwojeHity.Database
             }
         }
 
-        //private List<Role> GetRoles()
-        //{
-        //    var roles = new List<Role>()
-        //    {
-        //        new Role
-        //        {
-        //            Name = "User"
-        //        },
-        //        new Role
-        //        {
-        //            Name = "Opiekun"
-        //        },
-        //        new Role
-        //        {
-        //            Name = "Admin"
-        //        }
-        //    };
-        //    return roles;
-        //}
     }

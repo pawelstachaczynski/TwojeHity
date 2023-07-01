@@ -50,13 +50,11 @@ namespace TwojeHity.Helpers
 
             CreateMap<FavoriteDto, Favorite>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
-            // .ForMember(x => x.ID_song, y => y.MapFrom(z => z.ID_song))
-            //.ForMember(x => x.ID_user, y => y.MapFrom(z => z.ID_user));
+
 
             CreateMap<Favorite, FavoriteDto>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
-               // .ForMember(x => x.ID_song, y => y.MapFrom(z => z.ID_song))
-              //  .ForMember(x => x.ID_user, y => y.MapFrom(z => z.ID_user));
+
 
 
 

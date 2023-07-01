@@ -88,8 +88,6 @@ app.UseAuthentication(); //Potwierdzenie to¿samoœci
 app.UseAuthorization();
 app.UseHttpsRedirection();
 
-//Potiwerdzenie, ¿e u¿ytkownik ma prawo do wykonania danej operacji
-
 app.MapControllers();
 
 app.Run();

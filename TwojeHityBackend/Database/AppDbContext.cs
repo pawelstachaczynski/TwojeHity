@@ -36,10 +36,6 @@ namespace TwojeHity.Database
 
             modelBuilder.Entity<Favorite>().HasKey(x => x.Id);
 
-           // modelBuilder.Entity<Favorite>().HasOne(x => x.User).WithMany().HasForeignKey(x => x.ID_user);
-
-          // modelBuilder.Entity<Favorite>().HasOne(x => x.Song).WithMany().HasForeignKey(x => x.ID_song);
-
         }
 
 

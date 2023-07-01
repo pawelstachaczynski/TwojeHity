@@ -11,6 +11,5 @@
 
         public FavoriteDto Favorites { get; set; }
 
-      //  public UserDto Users { get; set; }
     }
 }

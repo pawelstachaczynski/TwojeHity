@@ -41,12 +41,6 @@ namespace TwojeHity.Repositories
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        //public async Task ChangeUserRole(int userId, int roleId)
-        //{
-        //    var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
-        //    await _context.SaveChangesAsync();
-        //}
-
         public async Task<User> GetUserByLogin(string login)
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Login == login);

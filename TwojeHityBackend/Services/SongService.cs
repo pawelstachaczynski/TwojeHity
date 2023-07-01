@@ -61,12 +61,8 @@ namespace TwojeHity.Services
 
         public async Task<int> AddNewSong(SongDto dto)
         {
-          //  var allsongs = _mapper.Map<List<FavoriteDto>>(dto);
             var lastRank = await _songRepository.getLastRankNumer();
-            //var lastId = await _songRepository.getLastId();
-            //dto.Favorites. = lastId;
             dto.Favorites = null;
-           // dto.Favorites.SongId = null;
 
           
                 var song = new Song
@@ -76,28 +72,10 @@ namespace TwojeHity.Services
                     artist = dto.artist,
                     album = dto.album,
                     year = dto.year,
-                  //  Favorites = 
                 };
                 int id = await _songRepository.AddNewSong(song);
                 return id;
 
-            
-            //else
-            //{
-            //    {
-            //        var song = new Song
-            //        {
-            //            rank = (int)lastRank + 1,
-            //            title = dto.title,
-            //            artist = dto.artist,
-            //            album = dto.album,
-            //            year = dto.year,
-            //            Favorites = dto.Favorites
-            //        };
-            //        int id = await _songRepository.AddNewSong(song);
-            //        return id;
-            //    }
-            //}
         }
 
 
@@ -106,7 +84,6 @@ namespace TwojeHity.Services
 
                 var lastRank = await _songRepository.getLastRankNumer();
                 var lastId = await _songRepository.getLastId();
-            //dto.Favorites. = lastId;
             var Fav = new Favorite
             {
                 UserId = dto.Favorites.UserId,
@@ -129,20 +106,6 @@ namespace TwojeHity.Services
                     }
                 }
 
-
-                //var song = new Song
-                //{
-                //    rank = (int)lastRank + 1,
-                //    title = dto.title,
-                //    artist = dto.artist,
-                //    album = dto.album,
-                //    year = dto.year,
-                //   Favorites = dto.Favorites
-                //};
-                // var song = _mapper.Map<SongDto>(dto);
-                //return song.Id;
-                //  int id = await _songRepository.AddNewSong(song);
-                // return id;
             }
 
         public async Task<int> AddToFavorite(FavoriteDto dto)
@@ -156,19 +119,15 @@ namespace TwojeHity.Services
 
         public async Task<IEnumerable<SongDto>> GetAllFavorites(int userId)
         {
-          //  var songs = _dbContext.Songs.ToList();
+
             var userSongs = await _songRepository.GetAllFavorites(userId);
             var allsongs = _mapper.Map<List<SongDto>>(userSongs);
             return allsongs;
         }
 
-        //public async Task<IEnumerable<SongDto>> DeleteFavorites(int userId)
             public async Task<bool> DeleteFavorite(int songId)
         {
-            //  var songs = _dbContext.Songs.ToList();
-            //  var userSongs = await _songRepository.GetAllFavorites(userId);
             bool id = await _songRepository.DeleteFavorite(songId);
-           // var allsongs = _mapper.Map<List<SongDto>>(userSongs);
             return id;
         }
 

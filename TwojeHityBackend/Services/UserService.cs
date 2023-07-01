@@ -22,7 +22,6 @@ namespace TwojeHity.Services
         UserDto GetById(int id);
         int RegisterUser(RegisterUserDto dto);
         void DeleteUser(int id);
-       // void UpdateUser(int id, UpdateUserDto dto);
     }
 
     public class UserService : IUserService
@@ -75,22 +74,5 @@ namespace TwojeHity.Services
             _dbContext.SaveChanges();
 
         }
-
-        //public void UpdateUser(int id, UpdateUserDto dto)
-        //{
-        //    var user = _dbContext.Users.FirstOrDefault(u => u.Id == id);
-
-        //    if (user is null)
-        //        throw new CustomException("User not found");
-        //    //var user = _mapper.Map<User>(dto); ???
-        //    user.FirstName = dto.FirstName;
-        //    user.LastName = dto.LastName;
-        //    user.City = dto.City;
-        //    user.Description = dto.Description;
-
-        //    _dbContext.SaveChanges();
-
-
-        //}
     }
 }

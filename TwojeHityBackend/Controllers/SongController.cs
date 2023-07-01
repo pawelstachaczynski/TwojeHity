@@ -45,7 +45,6 @@ namespace TwojeHity.Controllers
         [Route("add-to-favorite")]
         public async Task<ActionResult> AddToFavorite([FromBody] FavoriteDto dto)
         {
-            //dto.SongId = await _songRepository.getLastRankNumer();
             return Ok(await _songService.AddToFavorite(dto));
 
         }

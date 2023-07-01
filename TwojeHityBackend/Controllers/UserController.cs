@@ -12,11 +12,6 @@ namespace TwojeHity.Controllers
     {
         private readonly IUserService _userService;
 
-        //private readonly IUserService userService;
-        //public UserController(IUserService userService)
-        //{
-        //    this.userService = userService;
-        //}
         public UserController(IUserService userService)
         {
             _userService = userService;
@@ -39,14 +34,6 @@ namespace TwojeHity.Controllers
             return Ok();
         }
 
-        //[HttpPost]
-        //public ActionResult RegisterUser([FromBody] RegisterUserDto dto)
-        //{
-
-        //    var id = _userService.RegisterUser(dto);
-        //    return Created($"/api/user/{id}", null);
-        //}
-
         [HttpDelete("{id}")]
         public ActionResult DeleteUser([FromRoute] int id)
         {
@@ -54,15 +41,6 @@ namespace TwojeHity.Controllers
             return NotFound();
         }
 
-        //[HttpPut("{id}")]
-        //public ActionResult UpdateUser([FromRoute] int id, [FromBody] UpdateUserDto dto)
-        //{
-
-        //    _userService.UpdateUser(id, dto);
-
-        //    //if (!isUpdated) return NotFound();
-        //    return Ok();
-        //}
 
 
     }
