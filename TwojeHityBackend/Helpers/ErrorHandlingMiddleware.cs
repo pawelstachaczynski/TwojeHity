@@ -34,7 +34,7 @@ namespace TwojeHity.Helpers
                 logger.LogError(ex, ex.Message);
 
                 context.Response.StatusCode = 500;
-                //await context.Response.WriteAsync(BackendMessage.General.GENERAL_ERROR);
+           
                 await context.Response.WriteAsync("Something went wrong");
             }
         }

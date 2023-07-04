@@ -8,5 +8,6 @@ namespace TwojeHity.Models
         public string Login { get; set; }
         public string PasswordHash { get; set; }
 
+        public ICollection<Favorite> Favorites { get; set; }
     }
 }

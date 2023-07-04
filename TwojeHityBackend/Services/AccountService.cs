@@ -30,9 +30,7 @@ namespace TwojeHity.Services
 
     public class AccountService : IAccountService
     {
-        //private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
-        // private readonly ILogger _logger;
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly AuthenticationSettings _authenticationSettings;
@@ -50,10 +48,6 @@ namespace TwojeHity.Services
         public async Task<AuthToken> GenerateJwtToken(LoginDto dto)
         {
             var user = await _userRepository.GetUserByLogin(dto.Login);
-            //if(user is null)
-            //{
-            //    throw new Exception("Nie istnieje taki użytkownik");
-            //};
 
             var verificationResult = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
             if (verificationResult == PasswordVerificationResult.Failed)
@@ -64,9 +58,6 @@ namespace TwojeHity.Services
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                //new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                //new Claim(ClaimTypes.Role, $"{user.Role.Name}"),
-                //new Claim("RegisterDate", user.RegisterDate.Value.ToString("dd-mm-yyyy"))
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
@@ -90,10 +81,8 @@ namespace TwojeHity.Services
             }
             catch (Exception ex)
             {
-                // Obsługa błędu.
                 Console.WriteLine($"Wystąpił błąd podczas pisania tokena JWT: {ex.Message}");
                 return null;
-                // Można też użyć loggera zamiast Console.WriteLine().
             }
 
         }
@@ -103,9 +92,6 @@ namespace TwojeHity.Services
             var newUser = _mapper.Map<User>(registerUserDto);
             newUser.PasswordHash = registerUserDto.Password;
             await _userValidator.RegisterUserValidate(newUser);
-
-
-            // newUser.RoleId = 3;
             var hashedPassword = _passwordHasher.HashPassword(newUser, registerUserDto.Password);
             newUser.PasswordHash = hashedPassword;
 

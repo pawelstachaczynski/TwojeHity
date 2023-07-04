@@ -11,12 +11,5 @@ export class UserPanelComponent implements OnInit {
 
 constructor( private router: Router, private toastr: ToastrService) {}
   unauthorized = false;
- /*  isActive(url: string) : boolean {
-    return this.router.isActive(url, true);
-  } */
   ngOnInit(): void {}
-  /* 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  } */
 }

@@ -48,6 +48,14 @@ namespace TwojeHity.Helpers
               .ForMember(x => x.album, y => y.MapFrom(z => z.album))
               .ForMember(x => x.year, y => y.MapFrom(z => z.year));
 
+            CreateMap<FavoriteDto, Favorite>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
+
+
+            CreateMap<Favorite, FavoriteDto>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
+
+
 
 
         }

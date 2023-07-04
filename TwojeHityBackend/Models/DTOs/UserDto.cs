@@ -7,6 +7,7 @@ namespace TwojeHity.Models.DTOs
         public int Id { get; set; }
         public string Login { get; set; }
         public string PasswordHash { get; set; }
+        public ICollection<Favorite> Favorites { get; set; }
 
     }
 }

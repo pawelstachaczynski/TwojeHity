@@ -15,6 +15,8 @@ namespace TwojeHity.Database
         public DbSet<User> Users { get; set; }
 
         public DbSet<Song> Songs { get; set; }
+
+        public DbSet<Favorite> Favorites {get; set;}
       
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -31,6 +33,8 @@ namespace TwojeHity.Database
             modelBuilder.Entity<User>()
                 .HasIndex(x => x.Login)
                 .IsUnique();
+
+            modelBuilder.Entity<Favorite>().HasKey(x => x.Id);
 
         }
 

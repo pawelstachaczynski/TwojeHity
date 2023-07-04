@@ -8,5 +8,8 @@
         public string artist { get; set; }
         public string album { get; set; }
         public int year { get; set; }
+
+        public FavoriteDto Favorites { get; set; }
+
     }
 }

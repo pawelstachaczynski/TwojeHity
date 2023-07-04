@@ -38,7 +38,7 @@ export class HttpErrorInterceptorService implements HttpInterceptor{
                                     this.alertService.showError("Koniec czasu oczekiwania na żądanie");
                                     break;
                                 case 500:
-                                    this.alertService.showError("Wystąpił wewnętrzny błąd serwera, spróbuj ponownie za kilka minut");
+                                    this.alertService.showError("Wystąpił błąd");
                                     break;
                             }
                         }
