@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddNewSongComponent } from './user-panel/add-new-song/add-new-song.component';
 import { BrowseAllComponent } from './user-panel/browse-all/browse-all.component';
@@ -20,7 +20,8 @@ const routes: Routes = [
 ];
 //
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), AppRoutingModule],
+  exports: [RouterModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppRoutingModule { }
