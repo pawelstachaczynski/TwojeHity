@@ -124,7 +124,7 @@ return  event.target.value
     this.response =  await lastValueFrom(this.songService.addNewWithFavorite(this.songFav))
      this.configStore.stopLoadingPanel();
      this.alertService.showSuccess("Dodano pomyślnie!");
-     this.alertService.showSuccess("Dodano do ulubionmych!");
+     this.alertService.showSuccess("Dodano do ulubionych!");
    } 
      if (this.isFavorite.valueOf() == "false")
      {
