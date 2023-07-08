@@ -2,8 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\TwojeHityBackend",
-    "\\TwojeHityBackend\\Controllers"
+    "\\TwojeHityBackend\\Controllers",
+    "\\TwojeHityBackend\\Database",
+    "\\TwojeHityBackend\\Helpers",
+    "\\TwojeHityBackend\\Models",
+    "\\TwojeHityBackend\\Repositories",
+    "\\TwojeHityBackend\\Services",
+    "\\TwojeHityBackend\\Validators"
   ],
-  "SelectedNode": "\\TwojeHityBackend\\TwojeHity.sln",
+  "SelectedNode": "\\TwojeHityBackend\\Database\\Seeder.cs",
   "PreviewInSolutionExplorer": false
 }

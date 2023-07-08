@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "TwojeHity": {
+    "TwojeHityAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
